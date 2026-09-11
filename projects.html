@@ -1,0 +1,1534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Projects | Abdulrhman Salama</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* =========================================
+           PROJECTS PAGE
+        ========================================== */
+
+        .projects-page {
+            min-height: 100vh;
+            padding: 120px 6% 80px;
+        }
+
+        .projects-header {
+            max-width: 850px;
+            margin: 0 auto 55px;
+            text-align: center;
+        }
+
+        .projects-header h1 {
+            font-size: clamp(2.2rem, 5vw, 3.6rem);
+            margin: 0 0 15px;
+        }
+
+        .projects-header p {
+            margin: 0;
+            color: var(--muted, #9aa7b2);
+            line-height: 1.8;
+        }
+
+        /* =========================================
+           HEADER / NAVBAR
+        ========================================== */
+
+        .projects-page-navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 5000;
+
+            height: 72px;
+            padding: 0 6%;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            background: rgba(8, 16, 24, 0.94);
+            border-bottom: 1px solid rgba(47, 217, 196, 0.12);
+            backdrop-filter: blur(12px);
+        }
+
+        .projects-page-navbar .nav-logo {
+            width: 42px !important;
+            height: 42px !important;
+
+            min-width: 42px;
+            min-height: 42px;
+
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+
+            overflow: hidden;
+            border-radius: 50%;
+
+            flex-shrink: 0;
+            text-decoration: none;
+        }
+
+        .projects-page-navbar .nav-logo img {
+            width: 42px !important;
+            height: 42px !important;
+
+            max-width: 42px !important;
+            max-height: 42px !important;
+
+            min-width: 42px !important;
+            min-height: 42px !important;
+
+            display: block !important;
+
+            object-fit: cover !important;
+            object-position: center !important;
+
+            margin: 0 !important;
+            padding: 0 !important;
+
+            border: none !important;
+            border-radius: 50% !important;
+
+            background: transparent !important;
+            box-shadow: none !important;
+        }
+
+        .projects-page-navbar .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .projects-page-navbar .nav-links a {
+            color: #c8d1d8;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+        }
+
+        .projects-page-navbar .nav-links a:hover,
+        .projects-page-navbar .nav-links a.active {
+            color: #2fd9c4;
+        }
+
+        /* =========================================
+           PROJECT CARDS
+        ========================================== */
+
+        .projects-grid {
+            width: min(1100px, 100%);
+            margin: 0 auto;
+
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            display: grid;
+            grid-template-columns: 165px minmax(0, 1fr);
+
+            min-height: 185px;
+            overflow: hidden;
+
+            background: rgba(12, 25, 35, 0.88);
+
+            border: 1px solid rgba(47, 217, 196, 0.16);
+            border-radius: 18px;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.25s ease,
+                border-color 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+
+            border-color: rgba(47, 217, 196, 0.5);
+
+            box-shadow:
+                0 18px 45px rgba(0, 0, 0, 0.25);
+        }
+
+        .project-card-image {
+            width: 100%;
+            height: 100%;
+            min-height: 185px;
+
+            overflow: hidden;
+            background: #081018;
+        }
+
+        .project-card-image img {
+            width: 100% !important;
+            height: 100% !important;
+
+            display: block !important;
+
+            object-fit: cover !important;
+            object-position: center !important;
+
+            margin: 0 !important;
+            padding: 0 !important;
+
+            border: none !important;
+            border-radius: 0 !important;
+
+            box-shadow: none !important;
+        }
+
+        .project-card:hover .project-card-image img {
+            transform: scale(1.05);
+        }
+
+        .project-card-content {
+            padding: 24px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .project-number {
+            margin-bottom: 8px;
+
+            color: #2fd9c4;
+
+            font-size: 0.74rem;
+            font-weight: 700;
+
+            letter-spacing: 0.12em;
+        }
+
+        .project-card h2 {
+            margin: 0 0 10px;
+
+            font-size: 1.25rem;
+            line-height: 1.4;
+        }
+
+        .project-card p {
+            margin: 0;
+
+            color: var(--muted, #9aa7b2);
+
+            font-size: 0.88rem;
+            line-height: 1.65;
+        }
+
+        .project-open {
+            margin-top: 14px;
+
+            color: #2fd9c4;
+
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* =========================================
+           BREAST CANCER PLACEHOLDER
+        ========================================== */
+
+        .project-placeholder {
+            width: 100%;
+            height: 100%;
+            min-height: 185px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #081018;
+
+            color: #2fd9c4;
+
+            font-size: 2.8rem;
+            font-weight: 700;
+        }
+
+        /* =========================================
+           MODAL
+        ========================================== */
+
+        .project-modal {
+            position: fixed;
+            inset: 0;
+
+            z-index: 10000;
+
+            display: none;
+            align-items: center;
+            justify-content: center;
+
+            padding: 20px;
+
+            background: rgba(0, 0, 0, 0.84);
+
+            backdrop-filter: blur(8px);
+        }
+
+        .project-modal.active {
+            display: flex;
+        }
+
+        .project-modal-box {
+            position: relative;
+
+            width: min(1000px, 100%);
+            max-height: 92vh;
+
+            overflow-y: auto;
+
+            background: #0b1721;
+
+            border: 1px solid rgba(47, 217, 196, 0.25);
+            border-radius: 20px;
+
+            box-shadow:
+                0 30px 90px rgba(0, 0, 0, 0.5);
+
+            animation: modalIn 0.25s ease;
+        }
+
+        @keyframes modalIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.98);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .project-modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+
+            z-index: 20;
+
+            width: 40px;
+            height: 40px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+
+            background: rgba(8, 16, 24, 0.92);
+
+            color: white;
+
+            font-size: 1.4rem;
+            line-height: 1;
+
+            cursor: pointer;
+        }
+
+        .project-modal-close:hover {
+            color: #2fd9c4;
+            border-color: #2fd9c4;
+        }
+
+        .project-modal-content {
+            padding: 45px;
+        }
+
+        .modal-label {
+            margin-bottom: 10px;
+
+            color: #2fd9c4;
+
+            font-size: 0.76rem;
+            font-weight: 700;
+
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .project-modal-content h2 {
+            margin: 0 0 15px;
+
+            font-size: clamp(1.8rem, 4vw, 2.7rem);
+            line-height: 1.3;
+        }
+
+        .modal-intro {
+            margin: 0 0 30px;
+
+            color: var(--muted, #9aa7b2);
+
+            line-height: 1.8;
+        }
+
+        /* =========================================
+           VIDEO
+        ========================================== */
+
+        .project-video {
+            width: 100%;
+
+            margin: 25px 0 35px;
+
+            overflow: hidden;
+
+            border-radius: 14px;
+            border: 1px solid rgba(47, 217, 196, 0.15);
+
+            background: #000;
+        }
+
+        .project-video video {
+            width: 100%;
+            height: auto;
+
+            max-height: 560px;
+
+            display: block;
+
+            background: #000;
+        }
+
+        /* =========================================
+           MODAL IMAGES
+        ========================================== */
+
+        .modal-main-image {
+            width: 100%;
+            max-height: 500px;
+
+            display: block;
+
+            margin: 25px 0 35px;
+
+            object-fit: contain;
+
+            border-radius: 14px;
+
+            background: #081018;
+
+            border: 1px solid rgba(47, 217, 196, 0.12);
+        }
+
+        .modal-section {
+            margin-top: 32px;
+        }
+
+        .modal-section h3 {
+            margin: 0 0 12px;
+
+            color: #2fd9c4;
+
+            font-size: 1.12rem;
+        }
+
+        .modal-section p {
+            margin: 0;
+
+            color: var(--muted, #9aa7b2);
+
+            line-height: 1.8;
+        }
+
+        .modal-list {
+            margin: 0;
+            padding-left: 20px;
+
+            color: var(--muted, #9aa7b2);
+
+            line-height: 1.9;
+        }
+
+        .modal-list li {
+            margin-bottom: 5px;
+        }
+
+        /* =========================================
+           PROJECT GALLERY
+        ========================================== */
+
+        .project-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+
+            gap: 15px;
+
+            margin-top: 18px;
+        }
+
+        .project-gallery img {
+            width: 100%;
+            height: 250px;
+
+            display: block;
+
+            object-fit: cover;
+
+            border-radius: 12px;
+
+            border: 1px solid rgba(47, 217, 196, 0.12);
+
+            background: #081018;
+        }
+
+        /* =========================================
+           TECHNOLOGIES
+        ========================================== */
+
+        .tech-list {
+            display: flex;
+            flex-wrap: wrap;
+
+            gap: 8px;
+
+            margin-top: 15px;
+        }
+
+        .tech {
+            padding: 7px 11px;
+
+            border: 1px solid rgba(47, 217, 196, 0.2);
+            border-radius: 999px;
+
+            color: #c9d4da;
+
+            background: rgba(47, 217, 196, 0.04);
+
+            font-size: 0.78rem;
+        }
+
+        /* =========================================
+           LINKS
+        ========================================== */
+
+        .project-links {
+            display: flex;
+            flex-wrap: wrap;
+
+            gap: 12px;
+
+            margin-top: 30px;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 11px 17px;
+
+            border: 1px solid rgba(47, 217, 196, 0.3);
+            border-radius: 10px;
+
+            color: #2fd9c4;
+
+            text-decoration: none;
+
+            font-size: 0.85rem;
+            font-weight: 600;
+
+            transition: 0.2s ease;
+        }
+
+        .project-link:hover {
+            background: rgba(47, 217, 196, 0.08);
+            border-color: #2fd9c4;
+        }
+
+        /* =========================================
+           PROJECT DETAILS
+        ========================================== */
+
+        .project-detail {
+            display: none;
+        }
+
+        .project-detail.active {
+            display: block;
+        }
+
+        /* =========================================
+           RESPONSIVE
+        ========================================== */
+
+        @media (max-width: 850px) {
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 650px) {
+
+            .projects-page {
+                padding: 105px 20px 60px;
+            }
+
+            .projects-page-navbar {
+                height: 64px;
+                padding: 0 20px;
+            }
+
+            .projects-page-navbar .nav-logo {
+                width: 38px !important;
+                height: 38px !important;
+                min-width: 38px;
+                min-height: 38px;
+            }
+
+            .projects-page-navbar .nav-logo img {
+                width: 38px !important;
+                height: 38px !important;
+                min-width: 38px !important;
+                min-height: 38px !important;
+            }
+
+            .projects-page-navbar .nav-links {
+                gap: 13px;
+            }
+
+            .projects-page-navbar .nav-links a {
+                font-size: 0.72rem;
+            }
+
+            .project-card {
+                grid-template-columns: 120px minmax(0, 1fr);
+                min-height: 155px;
+            }
+
+            .project-card-image,
+            .project-placeholder {
+                min-height: 155px;
+            }
+
+            .project-card-content {
+                padding: 18px;
+            }
+
+            .project-card h2 {
+                font-size: 1.02rem;
+            }
+
+            .project-card p {
+                font-size: 0.79rem;
+            }
+
+            .project-open {
+                font-size: 0.74rem;
+            }
+
+            .project-modal {
+                padding: 8px;
+            }
+
+            .project-modal-content {
+                padding: 30px 20px;
+            }
+
+            .project-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .project-gallery img {
+                height: auto;
+                max-height: 350px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================================
+         NAVBAR
+    ========================================== -->
+
+    <nav class="projects-page-navbar">
+
+        <a href="index.html" class="nav-logo">
+            <img
+                src="images/My/profile.png"
+                alt="AS">
+        </a>
+
+        <div class="nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+            <a href="projects.html" class="active">
+                Projects
+            </a>
+
+            <a href="certificates.html">
+                Certificates
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =========================================
+         MAIN PROJECTS PAGE
+    ========================================== -->
+
+    <main class="projects-page">
+
+        <header class="projects-header">
+
+            <div class="eyebrow">
+                Selected Work
+            </div>
+
+            <h1>
+                Projects
+            </h1>
+
+            <p>
+                A selection of projects covering computer vision,
+                data analysis, machine learning, and AI.
+                Click any project to open its details, images,
+                video, and related links.
+            </p>
+
+        </header>
+
+
+        <!-- =====================================
+             PROJECT CARDS
+        ====================================== -->
+
+        <section class="projects-grid">
+
+
+            <!-- ================================
+                 PROJECT 1
+            ================================= -->
+
+            <article
+                class="project-card"
+                data-project="graduation">
+
+                <div class="project-card-image">
+
+                    <img
+                        src="images/projects/robot-presentation.jpg"
+                        alt="Graduation Project">
+
+                </div>
+
+                <div class="project-card-content">
+
+                    <div class="project-number">
+                        01 · GRADUATION PROJECT
+                    </div>
+
+                    <h2>
+                        AI-Based Computer Vision Graduation Project
+                    </h2>
+
+                    <p>
+                        An AI and computer vision graduation project
+                        involving a camera-based system.
+                    </p>
+
+                    <div class="project-open">
+                        Click to view project →
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- ================================
+                 PROJECT 2
+            ================================= -->
+
+            <article
+                class="project-card"
+                data-project="traffic">
+
+                <div class="project-card-image">
+
+                    <img
+                        src="images/projects/traffic-prediction.png"
+                        alt="Uber and Lyft Cab Prices Analysis">
+
+                </div>
+
+                <div class="project-card-content">
+
+                    <div class="project-number">
+                        02 · DATA & ML
+                    </div>
+
+                    <h2>
+                        Uber & Lyft Cab Prices Analysis
+                    </h2>
+
+                    <p>
+                        Data analysis and machine learning project
+                        focused on ride pricing and prediction.
+                    </p>
+
+                    <div class="project-open">
+                        Click to view project →
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- ================================
+                 PROJECT 3
+            ================================= -->
+
+            <article
+                class="project-card"
+                data-project="breast-cancer">
+
+                <div class="project-card-image">
+
+                    <div class="project-placeholder">
+                        BC
+                    </div>
+
+                </div>
+
+                <div class="project-card-content">
+
+                    <div class="project-number">
+                        03 · MACHINE LEARNING
+                    </div>
+
+                    <h2>
+                        Breast Cancer Wisconsin Classification
+                    </h2>
+
+                    <p>
+                        A machine learning classification project
+                        using the Breast Cancer Wisconsin dataset.
+                    </p>
+
+                    <div class="project-open">
+                        Click to view project →
+                    </div>
+
+                </div>
+
+            </article>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================
+         PROJECT MODAL
+    ========================================== -->
+
+    <div
+        class="project-modal"
+        id="projectModal">
+
+        <div class="project-modal-box">
+
+
+            <!-- CLOSE -->
+
+            <button
+                type="button"
+                class="project-modal-close"
+                id="closeProjectModal"
+                aria-label="Close project">
+
+                ×
+
+            </button>
+
+
+            <!-- =================================
+                 GRADUATION PROJECT DETAILS
+            ================================== -->
+
+            <div
+                class="project-detail"
+                id="detail-graduation">
+
+                <div class="project-modal-content">
+
+                    <div class="modal-label">
+                        Graduation Project
+                    </div>
+
+                    <h2>
+                        AI-Based Computer Vision Graduation Project
+                    </h2>
+
+                    <p class="modal-intro">
+                        My graduation project focused on an
+                        AI and computer-vision based system.
+                        My contribution included working on the
+                        camera-node component of the system.
+                    </p>
+
+
+                    <!-- VIDEO -->
+
+                    <div class="project-video">
+
+                        <video
+                            id="graduationVideo"
+                            controls
+                            autoplay
+                            muted
+                            playsinline
+                            preload="metadata">
+
+                            <source
+                                src="Videos/graduation-project.mp4"
+                                type="video/mp4">
+
+                            Your browser does not support HTML5 video.
+
+                        </video>
+
+                    </div>
+
+
+                    <!-- MAIN IMAGE -->
+
+                    <img
+                        class="modal-main-image"
+                        src="images/projects/robot-presentation.jpg"
+                        alt="Graduation Project Presentation">
+
+
+                    <!-- OVERVIEW -->
+
+                    <section class="modal-section">
+
+                        <h3>
+                            Project Overview
+                        </h3>
+
+                        <p>
+                            The project is based on applying artificial
+                            intelligence and computer vision techniques
+                            to a real-world system. The system uses a
+                            camera-based component as part of its
+                            overall architecture.
+                        </p>
+
+                    </section>
+
+
+                    <!-- CONTRIBUTION -->
+
+                    <section class="modal-section">
+
+                        <h3>
+                            My Contribution
+                        </h3>
+
+                        <p>
+                            I worked on the camera-node component of
+                            the project, which is available separately
+                            on GitHub.
+                        </p>
+
+                    </section>
+
+
+                    <!-- PHOTOS -->
+
+                    <section class="modal-section">
+
+                        <h3>
+                            Project Photos
+                        </h3>
+
+                        <div class="project-gallery">
+
+                            <img
+                                src="images/projects/robot-presentation.jpg"
+                                alt="Graduation project presentation">
+
+                            <img
+                                src="images/projects/graduation-team.jpg"
+                                alt="Graduation project team">
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- GITHUB -->
+
+                    <div class="project-links">
+
+                        <a
+                            class="project-link"
+                            href="https://github.com/abdulrhmansalama/camera-node"
+                            target="_blank"
+                            rel="noopener noreferrer">
+
+                            View Camera Node on GitHub →
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================
+                 TRAFFIC PROJECT DETAILS
+            ================================== -->
+
+            <div
+                class="project-detail"
+                id="detail-traffic">
+
+                <div class="project-modal-content">
+
+                    <div class="modal-label">
+                        Data Analysis & Machine Learning
+                    </div>
+
+                    <h2>
+                        Uber & Lyft Cab Prices Analysis
+                    </h2>
+
+                    <p class="modal-intro">
+                        A comprehensive data analysis and machine
+                        learning project based on approximately
+                        100,000 Uber and Lyft ride records.
+                    </p>
+
+
+                    <!-- IMAGE -->
+
+                    <img
+                        class="modal-main-image"
+                        src="images/projects/traffic-prediction.png"
+                        alt="Uber Lyft Cab Prices Analysis">
+
+
+                    <!-- OVERVIEW -->
+
+                    <section class="modal-section">
+
+                        <h3>
+                            Project Overview
+                        </h3>
+
+                        <p>
+                            The project analyzes ride pricing using
+                            multiple features related to the ride,
+                            including geographic information,
+                            distance, cab company, and other
+                            ride-related attributes.
+                        </p>
+
+                    </section>
+
+
+                    <!-- TECHNICAL WORKFLOW -->
+
+                    <section class="modal-section">
+
+                        <h3>
+                            Technical Workflow
+                        </h3>
+
+                        <ul class="modal-list">
+
+                            <li>
+                                Data exploration and preprocessing
+                            </li>
+
+                            <li>
+                                Geospatial feature transformation
+                            </li>
+
+                            <li>
+                                Haversine distance calculation
+                            </li>
+
+                            <li>
+                                Exploratory data analysis and
+                                visualization
+                            </li>
+
+                            <li>
+                                Uber vs. Lyft pricing analysis
+                            </li>
+
+                            <li>
+                                Surge pricing analysis
+                            </li>
+
+                            <li>
+                                Supervised machine learning
+                            </li>
+
+                            <li>
+                                Unsupervised learning and clustering
+                            </li>
+
+                            <li>
+                                Dimensionality reduction using PCA
+                            </li>
+
+                            <li>
+                                Deep learning experiments
+                            </li>
+
+                            <li>
+                                Streamlit dashboard deployment
+                            </li>
+
+                        </ul>
+
+                    </section>
+
+
+                    <!-- TECHNOLOGIES -->
+
+                    <section class="modal-section">
+
+                        <h3>
+                            Technologies
+                        </h3>
+
+                        <div class="tech-list">
+
+                            <span class="tech">
+                                Python
+                            </span>
+
+                            <span class="tech">
+                                Pandas
+                            </span>
+
+                            <span class="tech">
+                                NumPy
+                            </span>
+
+                            <span class="tech">
+                                Matplotlib
+                            </span>
+
+                            <span class="tech">
+                                Seaborn
+                            </span>
+
+                            <span class="tech">
+                                Plotly
+                            </span>
+
+                            <span class="tech">
+                                Scikit-learn
+                            </span>
+
+                            <span class="tech">
+                                XGBoost
+                            </span>
+
+                            <span class="tech">
+                                TensorFlow
+                            </span>
+
+                            <span class="tech">
+                                Keras
+                            </span>
+
+                            <span class="tech">
+                                Streamlit
+                            </span>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- MACHINE LEARNING -->
+
+                    <section class="modal-section">
+
+                        <h3>
+                            Machine Learning
+                        </h3>
+
+                        <p>
+                            The project includes supervised models
+                            such as XGBoost, Random Forest, and
+                            Gradient Boosting, together with
+                            unsupervised techniques including K-Means,
+                            DBSCAN, and PCA. Deep-learning experiments
+                            included LSTM and Autoencoders.
+                        </p>
+
+                    </section>
+
+
+                    <!-- GITHUB -->
+
+                    <div class="project-links">
+
+                        <a
+                            class="project-link"
+                            href="https://github.com/abdulrhmansalama/Uber-Lyft-Cab-prices-analysis"
+                            target="_blank"
+                            rel="noopener noreferrer">
+
+                            View Project on GitHub →
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================
+                 BREAST CANCER DETAILS
+            ================================== -->
+
+            <div
+                class="project-detail"
+                id="detail-breast-cancer">
+
+                <div class="project-modal-content">
+
+                    <div class="modal-label">
+                        Machine Learning
+                    </div>
+
+                    <h2>
+                        Breast Cancer Wisconsin Classification
+                    </h2>
+
+                    <p class="modal-intro">
+                        A machine learning classification project
+                        using the Breast Cancer Wisconsin dataset.
+                    </p>
+
+
+                    <!-- OVERVIEW -->
+
+                    <section class="modal-section">
+
+                        <h3>
+                            Project Overview
+                        </h3>
+
+                        <p>
+                            The project applies a machine learning
+                            classification workflow to the Breast
+                            Cancer Wisconsin dataset, with the goal
+                            of building and evaluating a predictive
+                            classification model.
+                        </p>
+
+                    </section>
+
+
+                    <!-- WORKFLOW -->
+
+                    <section class="modal-section">
+
+                        <h3>
+                            Workflow
+                        </h3>
+
+                        <ul class="modal-list">
+
+                            <li>
+                                Dataset exploration
+                            </li>
+
+                            <li>
+                                Data preprocessing
+                            </li>
+
+                            <li>
+                                Feature preparation
+                            </li>
+
+                            <li>
+                                Machine learning classification
+                            </li>
+
+                            <li>
+                                Model evaluation
+                            </li>
+
+                        </ul>
+
+                    </section>
+
+
+                    <!-- KAGGLE -->
+
+                    <div class="project-links">
+
+                        <a
+                            class="project-link"
+                            href="https://www.kaggle.com/code/abdulrhman-salama/breast-cancer-wisconsin-dataset"
+                            target="_blank"
+                            rel="noopener noreferrer">
+
+                            View Project on Kaggle →
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const projectCards =
+                document.querySelectorAll(".project-card");
+
+            const projectModal =
+                document.getElementById("projectModal");
+
+            const closeProjectModal =
+                document.getElementById("closeProjectModal");
+
+            const projectDetails =
+                document.querySelectorAll(".project-detail");
+
+            const graduationVideo =
+                document.getElementById("graduationVideo");
+
+
+            /* =====================================
+               OPEN PROJECT
+            ====================================== */
+
+            function openProject(projectName) {
+
+                /* Hide all project details */
+
+                projectDetails.forEach(function (detail) {
+
+                    detail.classList.remove("active");
+
+                });
+
+
+                /* Find selected project */
+
+                const selectedProject =
+                    document.getElementById(
+                        "detail-" + projectName
+                    );
+
+
+                if (!selectedProject) {
+                    return;
+                }
+
+
+                /* Show selected project */
+
+                selectedProject.classList.add("active");
+
+                projectModal.classList.add("active");
+
+                document.body.style.overflow = "hidden";
+
+
+                /* =================================
+                   GRADUATION VIDEO
+                ================================== */
+
+                if (projectName === "graduation") {
+
+                    graduationVideo.pause();
+
+                    graduationVideo.currentTime = 0;
+
+                    graduationVideo.load();
+
+
+                    /*
+                     * Video is muted so browsers are
+                     * allowed to autoplay it.
+                     */
+
+                    const playPromise =
+                        graduationVideo.play();
+
+
+                    if (playPromise !== undefined) {
+
+                        playPromise.catch(function () {
+
+                            /*
+                             * If autoplay is blocked by
+                             * the browser, the video
+                             * remains ready to play
+                             * using the controls.
+                             */
+
+                        });
+
+                    }
+
+                } else {
+
+                    graduationVideo.pause();
+
+                    graduationVideo.currentTime = 0;
+
+                }
+
+            }
+
+
+            /* =====================================
+               CLOSE PROJECT
+            ====================================== */
+
+            function closeProject() {
+
+                projectModal.classList.remove("active");
+
+                document.body.style.overflow = "";
+
+
+                graduationVideo.pause();
+
+                graduationVideo.currentTime = 0;
+
+            }
+
+
+            /* =====================================
+               PROJECT CARD CLICK
+            ====================================== */
+
+            projectCards.forEach(function (card) {
+
+                card.addEventListener(
+                    "click",
+                    function () {
+
+                        const projectName =
+                            card.getAttribute(
+                                "data-project"
+                            );
+
+                        openProject(projectName);
+
+                    }
+                );
+
+            });
+
+
+            /* =====================================
+               CLOSE BUTTON
+            ====================================== */
+
+            closeProjectModal.addEventListener(
+                "click",
+                closeProject
+            );
+
+
+            /* =====================================
+               CLICK OUTSIDE MODAL
+            ====================================== */
+
+            projectModal.addEventListener(
+                "click",
+                function (event) {
+
+                    if (
+                        event.target === projectModal
+                    ) {
+
+                        closeProject();
+
+                    }
+
+                }
+            );
+
+
+            /* =====================================
+               ESCAPE KEY
+            ====================================== */
+
+            document.addEventListener(
+                "keydown",
+                function (event) {
+
+                    if (
+                        event.key === "Escape" &&
+                        projectModal.classList.contains("active")
+                    ) {
+
+                        closeProject();
+
+                    }
+
+                }
+            );
+
+        });
+
+    </script>
+
+</body>
+</html>
